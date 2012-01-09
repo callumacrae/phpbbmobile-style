@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+	<meta charset="{S_CONTENT_ENCODING}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{META}
+	
+	<link rel="stylesheet" href="{T_STYLESHEET_LINK}" />
+	<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+	<script>
+		$(document).bind('mobileinit', function() {
+			$.extend($.mobile, {
+				loadingMessage: 'loading',
+				pageLoadErrorMessage: 'Error Loading Page'
+			});
+		});
+		
+		$(function() {
+			$('.postauthor a').click(function() {
+				var author = '<h3>' + $(this).text() + '</h3>';
+				var html = $(this).parents('li').children('.post_author_click').html();
+				$('#author_click div').html(author + html);
+			});
+		});
+	</script>
+	<script src="{T_SUPER_TEMPLATE_PATH}/jquery.mobile.min.js"></script>
+</head>
+<body>
+<div data-role="page" data-theme="b" data-add-back-btn="true">
+	<div data-role="header">
+		<h1>{PAGE_TITLE}</h1>
+	</div>
+	<div data-role="content">

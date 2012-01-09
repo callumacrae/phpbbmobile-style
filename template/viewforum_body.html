@@ -1,0 +1,95 @@
+<!-- INCLUDE overall_header.html -->
+<h2>{FORUM_NAME}</h2>
+
+<!-- IF S_FORUM_RULES -->
+			<div class="ui-body ui-body-e">
+		<!-- IF U_FORUM_RULES -->
+				<h3><a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a></h3>
+		<!-- ELSE -->
+				<h3>{L_FORUM_RULES}</h3>
+				<p>{FORUM_RULES}</p>
+		<!-- ENDIF -->
+		</div>
+<!-- ENDIF -->
+
+<!-- IF S_HAS_SUBFORUM -->
+	<!-- INCLUDE forumlist_body.html -->
+<!-- ENDIF -->
+
+<!-- IF S_DISPLAY_POST_INFO or PAGINATION or TOTAL_POSTS or TOTAL_TOPICS -->
+	<!-- IF PAGINATION or TOTAL_POSTS or TOTAL_TOPICS -->
+		<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
+			<!-- IF PREVIOUS_PAGE --><a href="{PREVIOUS_PAGE}" data-role="button" data-icon="arrow-l" data-theme="c" data-direction="reverse">&nbsp;</a><!-- ENDIF -->
+			<a href="#" data-role="button" data-theme="c" class="jumpto">{PAGE_NUMBER}</a>
+			<!-- IF NEXT_PAGE --><a href="{NEXT_PAGE}" data-role="button" data-icon="arrow-r" data-theme="c" data-iconpos="right">&nbsp;</a><!-- ENDIF -->
+		</div>
+	<!-- ENDIF -->
+		
+	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO and not S_IS_LOCKED-->
+		<a href="{U_POST_NEW_TOPIC}" data-role="button">{L_POST_TOPIC}</a>
+	<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- IF S_NO_READ_ACCESS -->
+		<div class="ui-body ui-body-e">
+			<h3>{L_NO_READ_ACCESS}</h3>
+		</div>
+
+	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+		<div data-role="collapsible" data-collapsed="true" data-inset="true" data-theme="c">
+			<h3>{L_LOGIN_LOGOUT}</h3>
+			<form action="{S_LOGIN_ACTION}" method="post">
+				<div data-role="fieldcontain">
+					<label for="username">{L_USERNAME}:</label>
+					<input type="text" name="username" id="username" data-theme="c" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="password">{L_PASSWORD}:</label>
+					<input type="password" name="password" id="password" data-theme="c" />
+				</div>
+			    <div data-role="fieldcontain">
+ 					<input type="checkbox" name="autologin" id="autologin" data-theme="c" />
+					<label for="autologin">{L_LOG_ME_IN} </label>
+				</div>
+				<div data-role="fieldcontain">
+					<button type="submit" data-theme="b" name="login">{L_LOGIN}</button>
+					{S_LOGIN_REDIRECT} {S_HIDDEN_FIELDS}
+				</div>
+			</form>
+		</div>
+	<!-- ENDIF -->
+<!-- ENDIF -->
+
+<!-- BEGIN topicrow -->
+
+	<!-- IF not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW -->
+		</ul>
+	<!-- ENDIF -->
+
+	<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
+		<ul data-role="listview" data-inset="true" data-theme="c">
+	<!-- ENDIF -->
+
+			<li class="<!-- IF topicrow.S_UNREAD_TOPIC -->un<!-- ENDIF -->read">
+				<a href="<!-- IF topicrow.S_UNREAD_TOPIC -->{topicrow.U_NEWEST_POST}<!-- ELSE -->{topicrow.U_VIEW_TOPIC}<!-- ENDIF -->">
+					{topicrow.TOPIC_TITLE}
+					<p class="ui-li-aside">{topicrow.TOPIC_AUTHOR}</p>
+					<span class="ui-li-count">{topicrow.REPLIES} </span>
+				</a>
+			</li>
+
+	<!-- IF topicrow.S_LAST_ROW -->
+		</ul>
+	<!-- ENDIF -->
+
+<!-- BEGINELSE -->
+	<!-- IF S_IS_POSTABLE -->
+		<div class="ui-body ui-body-e">
+			<h3>{L_NO_TOPICS}</h3>
+		</div>
+	<!-- ENDIF -->
+<!-- END topicrow -->
+
+<a href="{U_INDEX}" data-role="button" data-direction="reverse" data-icon="arrow-l">{L_INDEX}</a>
+
+<!-- INCLUDE overall_footer.html -->

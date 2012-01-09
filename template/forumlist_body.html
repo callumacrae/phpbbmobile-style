@@ -1,0 +1,28 @@
+
+<!-- BEGIN forumrow -->
+	<!-- IF (forumrow.S_IS_CAT and not forumrow.S_FIRST_ROW) or forumrow.S_NO_CAT  -->
+		</ul><br />
+	<!-- ENDIF -->
+		
+	<!-- IF forumrow.S_IS_CAT or forumrow.S_FIRST_ROW  or forumrow.S_NO_CAT  -->
+		<h2><!-- IF forumrow.S_IS_CAT -->{forumrow.FORUM_NAME}<!-- ELSE -->{L_FORUM}<!-- ENDIF --></h2>
+		<ul data-role="listview" data-inset="true" data-theme="c">
+	<!-- ENDIF -->
+
+	<!-- IF not forumrow.S_IS_CAT -->
+			<li><a href="{forumrow.U_VIEWFORUM}">
+				<h3 class="<!-- IF forumrow.S_UNREAD_FORUM -->un<!-- ENDIF -->read">{forumrow.FORUM_NAME}</h3><!-- IF forumrow.FORUM_DESC -->
+				<p><strong>{forumrow.FORUM_DESC}</strong></p><!-- ENDIF -->
+				<p>{forumrow.TOPICS} {L_TOPICS} &bull; {forumrow.POSTS} {L_POSTS}</p>
+			</a></li>
+	<!-- ENDIF -->
+
+	<!-- IF forumrow.S_LAST_ROW -->
+		</ul><br />
+	<!-- ENDIF -->
+
+<!-- BEGINELSE -->
+		<div class="ui-body ui-body-e">
+			<h3>{L_NO_FORUMS}</h3>
+		</div>
+<!-- END forumrow -->

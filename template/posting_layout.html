@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+
+<h3><!-- IF TOPIC_TITLE -->{TOPIC_TITLE}<!-- ELSE -->{FORUM_NAME}<!-- ENDIF --></h3>
+
+<!-- IF S_FORUM_RULES -->
+		<div class="ui-body ui-body-e">
+		<!-- IF U_FORUM_RULES -->
+			<h3><a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a></h3>
+		<!-- ELSE -->
+			<h3>{L_FORUM_RULES}</h3>
+			<p>{FORUM_RULES}</p>
+		<!-- ENDIF -->
+		</div>
+<!-- ENDIF -->
+
+<form id="postform" method="post" action="{S_POST_ACTION}"{S_FORM_ENCTYPE}>
+
+<!-- IF S_DRAFT_LOADED -->
+		<div class="ui-body ui-body-b">
+			<h3>{L_INFORMATION}</h3>
+			<p>{L_DRAFT_LOADED}</p>
+		</div>
+<!-- ENDIF -->
+
+<!-- IF S_POST_REVIEW --><!-- INCLUDE posting_review.html --><!-- ENDIF -->
+<!-- IF S_DISPLAY_PREVIEW --><!-- INCLUDE posting_preview.html --><!-- ENDIF -->
+
+<div class="panel" id="">
+	
+	<strong>{L_POST_A}</strong><br /><br />
+
+	<!-- DEFINE $EXTRA_POSTING_OPTIONS = 1 -->
+	<!-- INCLUDE posting_editor.html -->
+	{S_FORM_TOKEN}
+</div>
+
+<!-- IF S_SHOW_POLL_BOX or S_POLL_DELETE --><!-- INCLUDE posting_poll_body.html --><!-- ENDIF -->
+
+</form>
+
+<!-- INCLUDE overall_footer.html -->

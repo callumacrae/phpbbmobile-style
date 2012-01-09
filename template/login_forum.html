@@ -1,0 +1,17 @@
+<!-- INCLUDE overall_header.html -->
+
+		<h3>{L_LOGIN_FORUM}</h3>
+		<p>{L_LOGIN_FORUM}</p>
+		<!-- IF LOGIN_ERROR --><p>{LOGIN_ERROR}</p><!-- ENDIF -->
+		<form action="{S_LOGIN_ACTION}" method="post">
+			<div data-role="fieldcontain">
+				<label for="password">{L_PASSWORD}:</label>
+				<input type="password" name="password" id="password" data-theme="c" />
+			</div>
+			<div data-role="fieldcontain">
+				{S_LOGIN_REDIRECT} {S_HIDDEN_FIELDS} {S_FORM_TOKEN}
+				<button type="submit" data-theme="b">{L_LOGIN}</button>
+			</div>
+		</form>
+
+<!-- INCLUDE overall_footer.html -->

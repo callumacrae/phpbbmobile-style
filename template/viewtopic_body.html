@@ -1,0 +1,86 @@
+<!-- INCLUDE overall_header.html -->
+
+<h2>{TOPIC_TITLE}</h2>
+
+<!-- IF S_FORUM_RULES -->
+			<div class="ui-body ui-body-e">
+		<!-- IF U_FORUM_RULES -->
+				<h3><a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a></h3>
+		<!-- ELSE -->
+				<h3>{L_FORUM_RULES}</h3>
+				<p>{FORUM_RULES}</p>
+		<!-- ENDIF -->
+		</div>
+<!-- ENDIF -->
+
+	<!-- IF PAGINATION or TOTAL_POSTS or TOTAL_TOPICS -->
+		<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
+			<!-- IF PREVIOUS_PAGE --><a href="{PREVIOUS_PAGE}" data-role="button" data-icon="arrow-l" data-theme="c" data-direction="reverse">&nbsp;</a><!-- ENDIF -->
+			<a href="#" data-role="button" data-theme="c" class="jumpto">{PAGE_NUMBER}</a>
+			<!-- IF NEXT_PAGE --><a href="{NEXT_PAGE}" data-role="button" data-icon="arrow-r" data-theme="c" data-iconpos="right">&nbsp;</a><!-- ENDIF -->
+		</div>
+	<!-- ENDIF -->
+
+	<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO and not S_IS_LOCKED -->
+		<a href="{U_POST_REPLY_TOPIC}" data-role="button">{L_POST_REPLY}</a>
+	<!-- ENDIF -->
+
+<!-- BEGIN postrow -->
+	<!-- IF postrow.S_FIRST_UNREAD --><a id="unread"></a><!-- ENDIF -->
+		<ul data-role="listview" data-inset="true" id="p{postrow.POST_ID}">
+			<li data-role="list-divider">
+				<span class="postauthor">
+					<a href="#author_click" data-rel="dialog" data-transition="slidedown">{postrow.POST_AUTHOR}</a>
+				</span>
+			<!-- IF not S_IS_BOT  -->
+				<span class="post_author_click">
+					<a href="{postrow.U_POST_AUTHOR}" data-role="button" data-theme="b">{L_READ_PROFILE}</a>
+					<!-- IF postrow.U_EDIT --><a href="{postrow.U_EDIT}" data-role="button" data-theme="b">{L_EDIT_POST}</a><!-- ENDIF -->
+					<!-- IF postrow.U_DELETE --><a href="{postrow.U_DELETE}" data-role="button" data-theme="b">{L_DELETE_POST}</a><!-- ENDIF -->
+					<!-- IF postrow.U_DELETE --><a href="{postrow.U_REPORT}" data-role="button" data-theme="b">{L_REPORT_POST}</a><!-- ENDIF -->
+					<!-- IF postrow.U_QUOTE --><a href="{postrow.U_QUOTE}" data-role="button" data-theme="b">{L_REPLY_WITH_QUOTE}</a><!-- ENDIF -->
+					<!-- IF postrow.U_PM --><a href="{postrow.U_PM}" data-role="button" data-theme="b">{L_PRIVATE_MESSAGE}</a><!-- ENDIF -->
+					<a href="index.html" data-role="button" data-rel="back" data-theme="a">Cancel</a>   
+				</span>
+			<!-- ENDIF -->
+			</li>
+
+
+			<li class="post"><!-- IF postrow.S_IGNORE_POST -->{postrow.L_IGNORE_POST}<!-- ELSE -->{postrow.MESSAGE}<!-- ENDIF --></li>
+			<!-- IF postrow.S_HAS_ATTACHMENTS and 0 -->
+				<dl class="attachbox">
+					<dt>{L_ATTACHMENTS}</dt>
+					<!-- BEGIN attachment -->
+						<dd>{postrow.attachment.DISPLAY_ATTACHMENT}</dd>
+					<!-- END attachment -->
+				</dl>
+		<!-- ENDIF -->
+			</ul>
+<!-- END postrow -->
+
+<!-- IF S_QUICK_REPLY -->
+	<!-- INCLUDE quickreply_editor.html -->
+<!-- ELSEIF not S_IS_BOT and S_DISPLAY_REPLY_INFO and not S_IS_LOCKED -->
+	<a href="{U_POST_REPLY_TOPIC}" data-role="button">{L_POST_REPLY}</a>
+<!-- ENDIF -->
+<a href="{U_INDEX}" data-role="button" data-direction="reverse" data-icon="arrow-l">{L_INDEX}</a>
+
+	</div>
+	<div data-role="footer"> 
+		<h4>Powered by <a href="http://phpbb.com/">phpBB</a></h4> 
+	</div>
+</div>
+
+<div data-role="page" id="author_click">
+	<div data-role="content" data-theme="a">
+		<h3>Share Photos</h3>
+		<a href="dialog-success.html" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Email</a>     
+		<a href="dialog-success.html" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Upload to flickr</a>       
+		<a href="dialog-success.html" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Share on Facebook</a>      
+		<a href="dialog-success.html" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Tweet photo</a>       
+		 		  
+		<a href="index.html" data-role="button" data-rel="back" data-theme="a">Cancel</a>    
+	</div>
+</div>
+<div><div>
+<!-- INCLUDE overall_footer.html -->
