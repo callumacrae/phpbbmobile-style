@@ -17,3 +17,8 @@
 .post_author_click {
 	display: none;
 }
+
+.ui-header .ui-title, .ui-footer .ui-title {
+	margin-right: 10px;
+	margin-left: 10px;
+}
