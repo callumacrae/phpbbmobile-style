@@ -26,3 +26,7 @@
 .ui-li-aside {
 	width: 25%;
 }
+
+.ui-li-has-arrow.ui-li-has-count .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow.ui-li-has-count {
+	padding-right: 55px;
+}
