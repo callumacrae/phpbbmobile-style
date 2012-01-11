@@ -22,19 +22,14 @@
 		</div>
 <!-- ENDIF -->
 
-<!-- IF S_POST_REVIEW --><!-- INCLUDE posting_review.html --><!-- ENDIF -->
-<!-- IF S_DISPLAY_PREVIEW --><!-- INCLUDE posting_preview.html --><!-- ENDIF -->
-
 <div class="panel" id="">
-	
+
 	<strong>{L_POST_A}</strong><br /><br />
 
 	<!-- DEFINE $EXTRA_POSTING_OPTIONS = 1 -->
 	<!-- INCLUDE posting_editor.html -->
 	{S_FORM_TOKEN}
 </div>
-
-<!-- IF S_SHOW_POLL_BOX or S_POLL_DELETE --><!-- INCLUDE posting_poll_body.html --><!-- ENDIF -->
 
 </form>
 
