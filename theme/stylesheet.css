@@ -34,3 +34,8 @@
 .profile-field {
 	cursor: default;
 }
+
+.post-date {
+	font-weight: normal;
+	float: right;
+}

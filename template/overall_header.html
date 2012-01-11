@@ -21,7 +21,7 @@
 
 		$(function() {
 			$('.postauthor a').click(function() {
-				var author = '<h3>' + $(this).text() + '</h3>';
+				var author = '<h3>' + $(this)[0].childNodes[0].nodeValue.slice(0, -1) + '</h3>';
 				var html = $(this).parents('li').children('.post_author_click').html();
 				$('#author_click div').html(author + html);
 			});
